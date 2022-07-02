@@ -66,7 +66,7 @@ function ItemDetail({item}) {
        <h3 className='text-xl font-semibold py-2'>Choose Additional Ingrediants</h3>
        <div className='py-3 flex flex-col sm:flex-row text-sm'>
         { item.extras.map((option => (
-          <div key={option._id} className='flex ml-2 py-2 items-center'>
+          <div key={item._id} className='flex ml-2 py-2 items-center'>
            <input onChange={(e)=>handleChange(e, option)} type='checkbox' id={option.text} name={option.text} className='h-5 w-7'/>
            <label htmlFor={option.text}>{option.text}</label>
          </div>
