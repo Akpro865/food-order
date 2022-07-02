@@ -3,8 +3,10 @@ import { FiPhoneCall } from 'react-icons/fi'
 import { BsCartDash } from 'react-icons/bs'
 import { BsToggleOn } from 'react-icons/bs'
 import Link from 'next/link'
+import { useDispatch, useSelector } from 'react-redux'
 
 function Navbar({switchTheme}) {
+  const cartCount = useSelector(state => state.cart)
   return (
    <nav className={`bg-app-color ${styles.header} flex w-full`}>
    	<div className={`flex ${styles.left} p-2 justify-center items-center`}>
@@ -39,7 +41,7 @@ function Navbar({switchTheme}) {
      <Link  href='/cart'>
       <div className='relative cursor-pointer'>
         <BsCartDash className='text-2xl text-white'/>
-        <span className='bg-blue-200 w-4 h-4 text-blue-800 flex justify-center items-center rounded-full -top-1 -right-2 absolute text-xs p-2'>5</span>
+        <span className='bg-blue-200 w-4 h-4 text-blue-800 flex justify-center items-center rounded-full -top-1 -right-2 absolute text-xs p-2'>{cartCount.quantity}</span>
       </div>      
      </Link>
      <button className='bg-slate-800 flex items-center outline-none cursor-pointer rounded-full py-1 px-2 sm:px-3 text-white' onClick={switchTheme}>

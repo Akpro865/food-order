@@ -1,6 +1,6 @@
 import FoodCard from '../FoodCard/FoodCard'
 
-function FoodList() {
+function FoodList({items}) {
   return (
   	<div className=''>
       <div className='p-5'>
@@ -10,14 +10,10 @@ function FoodList() {
        And if you fall in love, well, then everything is easy.</p>
       </div>
       <div className='p-2 flex flex-wrap justify-evenly'>
-       <FoodCard />
-       <FoodCard />
-       <FoodCard />
-       <FoodCard />
-       <FoodCard />
-       <FoodCard />
-       <FoodCard />
-       <FoodCard />
+       { items.map(item => (
+          <FoodCard key={item._id} item={item} />
+       ))       
+       }
       </div>
     </div>
   )

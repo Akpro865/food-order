@@ -1,8 +1,10 @@
 import styles from '../../styles/order.module.css'
 import Image from "next/image";
+import axios from 'axios'
 
-function Order() {
-   const status = 0;
+function Order({order}) {
+  console.log(order)
+   const status = order.status;
 
    const statusClass = (index) => {
     if (index - status < 1) return styles.done;
@@ -21,10 +23,10 @@ function Order() {
          </thead>
          <tbody>
           <tr className='p-2'>
-           <td className='text-center'>546738327298</td>
-           <td className='text-center'>Priya</td>
-           <td className='text-center'>Panama, 21-2 KE</td>
-           <td className='text-center'>$ 320.3</td>
+           <td className='text-center'>{order._id}</td>
+           <td className='text-center'>{order.customer}</td>
+           <td className='text-center'>{order.address}</td>
+           <td className='text-center'>$ {order.total}</td>
           </tr>          
          </tbody>
         </table>
@@ -85,18 +87,18 @@ function Order() {
            <h2 className='font-bold text-xl py-2 flex justify-center'>CART TOTAL</h2>
 	       <div className='flex justify-center py-1 xl:py-2'>
 	         <span  className='mr-3 font-semibold'>Subtotal:</span>
-	         <span>$ 200.2</span>
+	         <span>$ {order.total}</span>
 	       </div>
 	       <div className='flex justify-center py-1 xl:py-2'>
 	         <span className='mr-3 font-semibold'>Discount:</span>
-	         <span>$ 22.0</span>
+	         <span>$ 0.0</span>
 	       </div>
 	       <div className='flex justify-center py-1 xl:py-2'>
 	         <span className='mr-3 font-semibold'>Total:</span>
-	         <span>$ 180.2</span>
+	         <span>$ {order.total}</span>
 	       </div>
 	       <div className='flex justify-center py-1 xl:py-2'>
-	         <button className='bg-green-600 border-none outline-none cursor-pointer py-2 px-3 font-bold rounded px-2'>Checkout Now</button>
+	         <button className='bg-green-500 border-none outline-none cursor-pointer py-2 px-3 font-bold rounded px-2 w-full'>paid</button>
 	       </div>
        </div>
       </div>
@@ -105,3 +107,13 @@ function Order() {
 }
 
 export default Order
+
+export const getServerSideProps = async ({params}) => {
+  const res = await axios.get(`http://localhost:3000/api/Orders/${params.id}`)
+  const order = res.data
+  return {
+    props: {
+      order
+    }
+  }
+}

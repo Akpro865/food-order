@@ -8,6 +8,7 @@ module.exports = {
     "./components/FoodCard/FoodCard.js",
     "./components/FoodList/FoodList.js",
     "./components/ImgSlide/ImgSlide.js",
+    "./components/CashOnDelivery/CashOnDelivery.js",
     "./pages/item/[id].js",
     "./pages/cart.js",
     "./pages/contact.js",
