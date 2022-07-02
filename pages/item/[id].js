@@ -65,14 +65,15 @@ function ItemDetail({item}) {
        </div>
        <h3 className='text-xl font-semibold py-2'>Choose Additional Ingrediants</h3>
        <div className='py-3 flex flex-col sm:flex-row text-sm'>
-        { item.extras.map((option => (
-          <div key={item._id} className='flex ml-2 py-2 items-center'>
+        { item.extras.map(((option,i) => (         
+          <div key={i} className='flex ml-2 py-2 items-center'>
            <input onChange={(e)=>handleChange(e, option)} type='checkbox' id={option.text} name={option.text} className='h-5 w-7'/>
            <label htmlFor={option.text}>{option.text}</label>
          </div>
         )))
          
        }
+        {console.log(item)}
        </div>
        <div className='py-5'>
          <input onChange={(e) => setQuantity(e.target.value)} type='number' defaultValue={1} className='h-10 w-16 outline-none border p-1 rounded text-center text-black'/>
