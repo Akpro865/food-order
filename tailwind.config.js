@@ -13,6 +13,9 @@ module.exports = {
     "./pages/cart.js",
     "./pages/contact.js",
     "./pages/order/[id].js",
+    "./pages/admin/index.js",
+    "./pages/admin/create.js",
+    "./pages/admin/login.js",
   ],
   theme: {
     extend: {

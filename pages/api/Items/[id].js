@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     }
     if (method === 'DELETE') {
         try {
-            await Items.findByIdAndRemove()
+            await Items.findByIdAndDelete(id)
             res.status(200).json('item deleted successfully.') 
         } catch(err) {
             res.status(500).json(err)

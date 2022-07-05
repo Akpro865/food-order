@@ -106,7 +106,7 @@ function Cart() {
             <tr key={item._id} className='p-2'>
              <td className='flex justify-center'><img src={item.img} className='h-12 w-12 sm:h-24 sm:w-24 object-cover object-center rounded-full ' /></td>
              <td className='text-center'>{item.title}</td>
-             <td className='text-center'>{item.extras.map(extra => (<span key={item._id}>{extra.text}, </span>))}</td>
+             <td className='text-center'>{item.extras.map((extra,i) => (<span key={i}>{extra.text}, </span>))}</td>
              <td className='text-center'>$ {item.price}</td>
              <td className='text-center'>{item.quantity}</td>
              <td className='text-center'>$ {item.price * item.quantity}</td>
